@@ -1,0 +1,66 @@
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include <assert.h>
+#include <limits.h>
+#include <stdbool.h>
+typedef struct LinkedListNode Sll;
+struct LinkedListNode {
+    int val;
+   Sll *next;
+}*head=NULL;
+
+Sll* InsertAtEnd(Sll *head,int val);
+int search(Sll *head,int k);
+int n;
+int main()
+{
+     int t;
+    scanf("%d",&n);
+    //j=n;
+   for(int ii=0;ii<n;ii++)
+   {
+       scanf("%d",&t);
+        head=InsertAtEnd(head,t);
+       //printf("%d ",t);
+   }
+    int k;
+    scanf("%d",&k);
+   int f=search(head,k);
+    if(f)
+        printf("yes");
+    else
+        printf("no");
+    return 0;
+}
+Sll* InsertAtEnd(Sll *head,int d)
+{
+    Sll *new=(Sll*)malloc(sizeof(Sll));
+    new->val=d;
+   new->next=NULL;
+    if(head==NULL)
+        head=new;
+    else{
+        Sll *ptr=head;
+        while(ptr->next!=NULL)
+            ptr=ptr->next;
+        ptr->next=new;
+    }
+   return head;
+}
+int search(Sll *head,int k)
+{
+  
+    Sll *ptr=head;
+    while(ptr!=NULL)
+    {
+        
+            if(ptr->val==k)
+                return 1;
+            ptr=ptr->next;
+    }
+    return 0;
+        
+    
+}
